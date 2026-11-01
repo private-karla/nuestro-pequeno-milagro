@@ -1,0 +1,345 @@
+
+/* =========================================
+   NUEVO SOBRE - KARLA Y ALE
+   ========================================= */
+
+/* Espacio reservado para la apertura */
+
+.sobrenuevo-escenario {
+    width: 100%;
+    height: 340px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    padding-bottom: 12px;
+}
+
+/* Estructura principal */
+
+#sobrenuevo-abrir {
+    position: relative;
+    isolation: isolate;
+
+    display: block;
+
+    width: min(320px, 85vw);
+    height: 208px;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+    border-radius: 9px;
+
+    color: inherit;
+    cursor: pointer;
+    overflow: visible;
+
+    perspective: 950px;
+
+    filter: drop-shadow(
+        0 15px 15px rgba(96, 67, 68, 0.18)
+    );
+
+    transform: none;
+}
+
+#sobrenuevo-abrir:hover,
+#sobrenuevo-abrir:disabled {
+    background: transparent;
+    transform: none;
+    opacity: 1;
+}
+
+#sobrenuevo-abrir:focus-visible {
+    outline: 3px solid #b99876;
+    outline-offset: 5px;
+}
+
+/* PARTE TRASERA */
+
+#sobrenuevo-abrir .sobrenuevo-trasera {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background: #e8ccc9;
+    border: 1px solid #ddc0ba;
+    border-radius: 9px;
+}
+
+/* TARJETA OCULTA AL PRINCIPIO */
+
+#sobrenuevo-abrir .sobrenuevo-tarjeta {
+    position: absolute;
+    top: 22px;
+    left: 9%;
+
+    z-index: 7;
+
+    display: grid;
+    place-items: center;
+
+    width: 82%;
+    height: 172px;
+
+    padding: 16px 12px;
+
+    background: #fffdf9;
+    color: #7c626a;
+
+    border: 1px solid #e9d6c9;
+    border-radius: 6px;
+
+    box-shadow: 0 8px 20px
+        rgba(90, 65, 65, 0.16);
+
+    /* Estas propiedades la ocultan */
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    /* Posición inicial de la animación */
+
+    transform: translateY(-40px)
+    scale(0.95);
+
+    transform-origin: center bottom;
+
+    transition:
+        transform 1.1s ease,
+        opacity 0.35s ease;
+}
+
+/* DISEÑO DE LA CARTA */
+
+#sobrenuevo-abrir .sobrenuevo-diseno {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    width: 100%;
+    height: 100%;
+
+    text-align: center;
+
+    font-family: Georgia, serif;
+    font-style: normal;
+    line-height: 1.25;
+}
+
+#sobrenuevo-abrir .sobrenuevo-flores {
+    color: #b98c99;
+    font-size: 23px;
+    letter-spacing: 3px;
+}
+
+#sobrenuevo-abrir .sobrenuevo-diseno strong {
+    color: #735c65;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+#sobrenuevo-abrir .sobrenuevo-diseno small {
+    color: #9d8579;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+#sobrenuevo-abrir .sobrenuevo-adorno {
+    color: #c4a276;
+    font-size: 20px;
+}
+
+/* BOLSILLO FRONTAL DEL SOBRE */
+
+#sobrenuevo-abrir .sobrenuevo-bolsillo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 4;
+
+    border-radius: 9px;
+    background: #f0d9d7;
+
+    clip-path: polygon(
+        0 0,
+        50% 53%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+
+    pointer-events: none;
+}
+
+/* Pliegue inferior */
+
+#sobrenuevo-abrir .sobrenuevo-bolsillo::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: #f8e9e6;
+
+    clip-path: polygon(
+        0 100%,
+        50% 53%,
+        100% 100%
+    );
+}
+
+
+/* SOLAPA SUPERIOR DEL SOBRE */
+
+#sobrenuevo-abrir .sobrenuevo-solapa {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 5;
+
+    width: 100%;
+    height: 54%;
+
+    background: #e2beba;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    transform-origin: center top;
+    transform: scaleY(1);
+
+    backface-visibility: visible;
+
+    transition: transform 0.8s ease;
+
+    pointer-events: none;
+}
+
+/* SELLO DEL CORAZÓN */
+
+#sobrenuevo-abrir .sobrenuevo-sello {
+    position: absolute;
+
+    top: calc(54% - 22px);
+    left: 50%;
+
+    z-index: 6;
+
+    display: grid;
+    place-items: center;
+
+    width: 44px;
+    height: 44px;
+
+    border-radius: 50%;
+    border: 2px solid #fff4ef;
+
+    background: #ad7e8e;
+    color: white;
+
+    font-size: 21px;
+
+    box-shadow: 0 3px 9px
+        rgba(96, 64, 76, 0.24);
+
+    transform: translateX(-50%);
+
+    transition: opacity 0.25s ease;
+
+    pointer-events: none;
+}
+
+/* =========================================
+   ANIMACIONES
+   ========================================= */
+
+/* 1. Abrir solapa */
+
+#sobrenuevo-abrir.abriendo .sobrenuevo-solapa {
+    transform: scaleY(-1);
+    z-index: 2;
+}
+
+/* LA CARTA PASA POR DELANTE DE LA SOLAPA */
+
+#sobrenuevo-abrir.mostrando-carta .sobrenuevo-tarjeta {
+    opacity: 1;
+    visibility: visible;
+
+    /* Por delante del bolsillo */
+    z-index: 7;
+
+    /* Subida moderada */
+    transform: 
+    translateY(-145px)
+    scale(1);
+}
+
+/* Desaparece el sello */
+
+#sobrenuevo-abrir.abriendo .sobrenuevo-sello {
+    opacity: 0;
+}
+
+/* 2. La tarjeta se hace visible y sale */
+
+#sobrenuevo-abrir.mostrando-carta
+.sobrenuevo-tarjeta {
+
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(-145px);
+}
+
+/* =========================================
+   ADAPTACIÓN A CELULARES
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .sobrenuevo-escenario {
+        height: 315px;
+    }
+
+    #sobrenuevo-abrir {
+        width: min(286px, 84vw);
+        height: 190px;
+    }
+
+    #sobrenuevo-abrir .sobrenuevo-tarjeta {
+        height: 159px;
+    }
+
+    #sobrenuevo-abrir .sobrenuevo-flores {
+        font-size: 20px;
+    }
+
+    #sobrenuevo-abrir .sobrenuevo-diseno strong {
+        font-size: 21px;
+    }
+}
+
+/* ACCESIBILIDAD */
+
+@media (prefers-reduced-motion: reduce) {
+    #sobrenuevo-abrir .sobrenuevo-solapa,
+    #sobrenuevo-abrir .sobrenuevo-tarjeta {
+        transition: none;
+    }
+}
