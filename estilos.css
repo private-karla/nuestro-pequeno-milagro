@@ -1136,6 +1136,8 @@ a:focus-visible {
     transform: translateY(-3px);
 }
 
+
+
 /* Adaptación para celular */
 
 @media (max-width: 600px) {
@@ -4227,7 +4229,7 @@ a:focus-visible {
    ====================================== */
 
 .pie-invitacion {
-    padding: 22px 15px 28px;
+    padding: 22px 15px 110px;
 
     background: #eef5fa;
 
@@ -4288,6 +4290,36 @@ a:focus-visible {
         animation: none;
     }
 }
+
+
+/* ==========================================
+   AJUSTE FINAL DEL FOOTER Y BOTÓN DE MÚSICA
+   ========================================== */
+
+@media (max-width: 600px) {
+
+    /* Espacio para que el botón no tape la frase */
+
+    .pie-invitacion {
+        padding-bottom: calc(
+            110px + env(safe-area-inset-bottom)
+        );
+    }
+
+    /* Botón flotante adaptado a celular */
+
+    #boton-musica {
+        right: 14px;
+        bottom: calc(
+            14px + env(safe-area-inset-bottom)
+        );
+
+        padding: 11px 15px;
+        font-size: 13px;
+    }
+
+}
+
 
 
 /* FIN DEL ARCHIVO */
