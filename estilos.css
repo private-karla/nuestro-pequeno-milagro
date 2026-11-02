@@ -1136,8 +1136,6 @@ a:focus-visible {
     transform: translateY(-3px);
 }
 
-
-
 /* Adaptación para celular */
 
 @media (max-width: 600px) {
@@ -4319,7 +4317,5 @@ a:focus-visible {
     }
 
 }
-
-
 
 /* FIN DEL ARCHIVO */
